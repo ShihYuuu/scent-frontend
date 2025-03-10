@@ -26,6 +26,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import theme from "assets/theme";
 import Presentation from "layouts/pages/presentation";
 import Home from "layouts/pages/home";
+import Experience from "layouts/pages/experience";
 
 // Material Kit 2 React routes
 import routes from "routes";
@@ -57,9 +58,10 @@ export default function App() {
       <CssBaseline />
       <Routes>
         {getRoutes(routes)}
+        <Route path="*" element={<Navigate to="/home" />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/experience" element={<Experience />} />
         <Route path="/presentation" element={<Presentation />} />
-        {/* <Route path="*" element={<Navigate to="/presentation" />} /> */}
-        <Route path="*" element={<Home />} />
       </Routes>
     </ThemeProvider>
   );

@@ -31,7 +31,7 @@ import footerRoutes from "footer.routes";
 // Images
 import bgImage from "assets/images/home_bg.jpg";
 
-function Presentation() {
+function Home() {
   return (
     <>
       <DefaultNavbar
@@ -206,4 +206,4 @@ function Presentation() {
   );
 }
 
-export default Presentation;
+export default Home;

@@ -12,7 +12,7 @@ import MKTypography from "components/MKTypography";
 import bgImage from "assets/images/shapes/waves-white.svg";
 
 // Navigate
-import Link from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Experience() {
   return (
@@ -36,7 +36,16 @@ function Experience() {
           opacity={0.2}
         />
         <Container sx={{ position: "relative", zIndex: 2, py: 12 }}>
-          <Grid container item xs={12} md={7} justifyContent="center" mx="auto" textAlign="center" flexDirection="column">
+          <Grid
+            container
+            item
+            xs={12}
+            md={7}
+            justifyContent="center"
+            mx="auto"
+            textAlign="center"
+            flexDirection="column"
+          >
             <MKTypography variant="h3" color="white">
               想嘗試自己調香嗎？
             </MKTypography>
@@ -48,7 +57,6 @@ function Experience() {
               color="info"
               size="large"
               component={Link}
-              href="https://www.creative-tim.com/product/material-kit-react"
               to="/experience"
               sx={{ mb: 2 }}
             >
