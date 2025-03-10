@@ -1,0 +1,25 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# compile
+dist/
+build/
+
+# testing
+/coverage
+
+# npm
+.npmrc
+
+# template
+CHANGELOG.md
+ISSUE_TEMPLATE.md
+
+# misc
+.eslintcache
+.DS_Store
+Thumbs.db
