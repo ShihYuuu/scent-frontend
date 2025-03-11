@@ -45,10 +45,33 @@ import routes from "routes";
 // Images
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 
+import axios from "axios";
+
 function SignInBasic() {
   const [rememberMe, setRememberMe] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
+
+  const handleSignIn = async () => {
+    try {
+      // eslint-disable-next-line no-undef
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}login`, {
+        email,
+        password,
+      });
+
+      console.log("登入成功:", response.data);
+      alert("登入成功！");
+
+      // 可以將 token 存入 localStorage 或 context
+      localStorage.setItem("token", response.data.token);
+    } catch (error) {
+      console.error("登入失敗:", error.response?.data || error.message);
+      alert("登入失敗，請檢查帳號密碼");
+    }
+  };
 
   return (
     <>
@@ -120,10 +143,22 @@ function SignInBasic() {
               <MKBox pt={4} pb={3} px={3}>
                 <MKBox component="form" role="form">
                   <MKBox mb={2}>
-                    <MKInput type="email" label="Email" fullWidth />
+                    <MKInput
+                      type="email"
+                      label="Email"
+                      fullWidth
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </MKBox>
                   <MKBox mb={2}>
-                    <MKInput type="password" label="Password" fullWidth />
+                    <MKInput
+                      type="password"
+                      label="Password"
+                      fullWidth
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
                   </MKBox>
                   <MKBox display="flex" alignItems="center" ml={-1}>
                     <Switch checked={rememberMe} onChange={handleSetRememberMe} />
@@ -138,7 +173,7 @@ function SignInBasic() {
                     </MKTypography>
                   </MKBox>
                   <MKBox mt={4} mb={1}>
-                    <MKButton variant="gradient" color="info" fullWidth>
+                    <MKButton variant="gradient" color="info" fullWidth onClick={handleSignIn}>
                       sign in
                     </MKButton>
                   </MKBox>
